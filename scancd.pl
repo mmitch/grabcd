@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.5 2004-06-07 17:54:24 mitch Exp $
+# $Id: scancd.pl,v 1.6 2004-06-07 18:44:49 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -43,6 +43,7 @@ die "no cd detected\n" unless $stat->present;
 
 my $cddb = $cd->cddb;
 my $discid = $cddb->discid;
+my @tracks = @{$stat->tracks};
 
 print "discid=[$discid], track_count=[".$stat->total_tracks."]\n";
 
@@ -52,7 +53,7 @@ print CDINFO "DISCID=$discid\n";
 
 use Term::ReadLine;
 my ($artist, $album, $path, $title, $version, $year);
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.5 2004-06-07 17:54:24 mitch Exp $';
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.6 2004-06-07 18:44:49 mitch Exp $';
 $|++;
 
 $artist = $term->readline("Artist  : ");
@@ -67,8 +68,13 @@ print CDINFO "PATH=$path\n";
 
 # {
 foreach my $track (1 .. $stat->total_tracks) {
+    unless ($tracks[$track-1]->is_audio) {
+	print "\nskipping $track, no audio...\n";
+	next;
+    }
     print CDINFO "\nTRACK=$track\n";
-    print "\nTRACK $track/".$stat->total_tracks."\n";
+    my ($minutes, $seconds) = $tracks[$track-1]->length;
+    printf "\n == Track %02d/%02d  %02d:%02d  ==\n", $track, $stat->total_tracks, $minutes, $seconds;
     if ($keep_artist) {
 	$artist  = $term->readline("Artist  :", $artist);
     } else {
