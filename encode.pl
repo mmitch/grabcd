@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: encode.pl,v 1.7 2004-06-18 20:01:34 mitch Exp $
+# $Id: encode.pl,v 1.8 2004-06-18 20:03:24 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -55,7 +55,7 @@ while ((my $track = readTag('TRACK')) ne '') {
 	     readTag('YEAR')
 	     );
 	my $filename = sprintf '%02d.%s.%s.%s.ogg', $track, $artist, $title, $version;
-	$filename =~ tr,/,_,;
+	$filename =~ tr,/, ,;
 	my @args = ('oggenc',
 		    '-Q',
 		    '-q', '6',
