@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.3 2004-06-04 22:00:18 mitch Exp $
+# $Id: scancd.pl,v 1.4 2004-06-06 21:01:59 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -48,5 +48,31 @@ print "discid=[$discid], track_count=[".$stat->total_tracks."]\n";
 open CDINFO, '>', $file or die "can't open `$file': $!\n";
 
 print CDINFO "DISCID=$discid\n";
+
+use Term::ReadLine;
+my ($artist, $album, $path, $title, $version, $year);
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.4 2004-06-06 21:01:59 mitch Exp $';
+$|++;
+
+$artist = $term->readline("Artist  : ");
+$album  = $term->readline("Album   : ");
+print CDINFO "ALBUM=$album\n";
+# read path
+$path   =  $artist;
+$path   =~ tr,/,_,;
+$album  =~ tr,/,_,;
+$path  .=  '/' . $album;
+print CDINFO "PATH=$path\n";
+
+# {
+foreach my $track (1 .. $stat->total_tracks) {
+    print CDINFO "\nTRACK=$track\n";
+    print "\nTRACK $track/".$stat->total_tracks."\n";
+    $artist  = $term->readline("Artist  : ");
+    $title   = $term->readline("Title   : ");
+    $version = $term->readline("Version : ");
+    $year    = $term->readline("Year    : ");
+    print CDINFO "ARTIST=$artist\nTITLE=$title\nVERSION=$version\nYEAR=$year\n";
+}
 
 close CDINFO or die "can't close `$file': $!\n";
