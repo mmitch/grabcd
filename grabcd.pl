@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: grabcd.pl,v 1.2 2004-06-07 18:58:55 mitch Exp $
+# $Id: grabcd.pl,v 1.3 2004-06-07 19:39:24 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -7,6 +7,14 @@
 use strict;
 use Audio::CD;
 
+
+# globals
+my $pfad   = '/tmp';
+my $file   = "$pfad/cdinfo";
+my $host   = 'mitch@mitch';
+my $encode = '/mnt/tomochan/home/mitch/grabcd/encode.pl';
+
+# subs
 sub readTag($)
 {
     my $tag = shift;
@@ -19,10 +27,7 @@ sub readTag($)
     return '';
 }
 
-# globals
-my $pfad = '/tmp';
-my $file = "$pfad/cdinfo";
-
+# main
 my $cd = Audio::CD->init;
 die "could not initialize Audio::CD\n" unless defined $cd;
 
@@ -39,12 +44,15 @@ my $discid_have = readTag('DISCID');
 die "discid does not match (want=$discid_want, have=$discid_have)\n" unless $discid_want eq $discid_have;
 
 # display album
-print 'Album : '.readTag('Album' )."\n";
+print 'Album : '.readTag('ALBUM' )."\n";
+
+# copy cdinfo
+system("scp $file $host:$file");
 
 # cycle tracks
 while ((my $track = readTag('TRACK')) ne '') {
     print "grabbing track $track\n";
-    system('cdparanoia -e -B -w $track >/dev/null 2>/dev/null');
+    system("cdparanoia -e -B -w $track - 2>/dev/null | ssh $host $encode $track");
 }
 
 close CDINFO or die "can't close `$file': $!\n";
