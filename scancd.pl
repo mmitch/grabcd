@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.15 2004-06-20 20:56:04 mitch Exp $
+# $Id: scancd.pl,v 1.16 2004-06-23 21:07:12 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -53,7 +53,7 @@ print CDINFO "DISCID=$discid\n";
 
 use Term::ReadLine;
 my ($artist, $album, $path, $title, $version, $year);
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.15 2004-06-20 20:56:04 mitch Exp $';
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.16 2004-06-23 21:07:12 mitch Exp $';
 $|++;
 
 $artist = $term->readline("Artist  :");
@@ -110,6 +110,7 @@ system("jmacs /tmp/cdinfo");
 use File::Copy;
 
 $path =~ s,/,___,g;
+$path =~ s/'/\\'/g;
 $path =~ s/ /\\ /g;
 $path =~ s/&/\\&/g;
 $path =~ s/</\\</g;
