@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.4 2004-06-06 21:01:59 mitch Exp $
+# $Id: scancd.pl,v 1.5 2004-06-07 17:54:24 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -9,7 +9,8 @@ use Audio::CD;
 
 # globals
 my ($keep_year, $keep_artist, $keep_title, $keep_version) = ( 1, 1, 0, 0 );
-my $file = '/tmp/cdinfo';
+my $pfad = '/tmp';
+my $file = "$pfad/cdinfo";
 
 
 my $args = join '', @ARGV;
@@ -51,7 +52,7 @@ print CDINFO "DISCID=$discid\n";
 
 use Term::ReadLine;
 my ($artist, $album, $path, $title, $version, $year);
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.4 2004-06-06 21:01:59 mitch Exp $';
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.5 2004-06-07 17:54:24 mitch Exp $';
 $|++;
 
 $artist = $term->readline("Artist  : ");
@@ -68,11 +69,32 @@ print CDINFO "PATH=$path\n";
 foreach my $track (1 .. $stat->total_tracks) {
     print CDINFO "\nTRACK=$track\n";
     print "\nTRACK $track/".$stat->total_tracks."\n";
-    $artist  = $term->readline("Artist  : ");
-    $title   = $term->readline("Title   : ");
-    $version = $term->readline("Version : ");
-    $year    = $term->readline("Year    : ");
+    if ($keep_artist) {
+	$artist  = $term->readline("Artist  :", $artist);
+    } else {
+	$artist  = $term->readline("Artist  :");
+    }
+    if ($keep_title) {
+	$title   = $term->readline("Title   :", $title);
+    } else {
+	$title   = $term->readline("Title   :");
+    }
+    if ($keep_version) {
+	$version = $term->readline("Version :", $version);
+    } else {
+	$version = $term->readline("Version :");
+    }
+    if ($keep_year) {
+	$year    = $term->readline("Year    :", $year);
+    } else {
+	$year    = $term->readline("Year    :");
+    }
     print CDINFO "ARTIST=$artist\nTITLE=$title\nVERSION=$version\nYEAR=$year\n";
 }
 
 close CDINFO or die "can't close `$file': $!\n";
+
+use File::Copy;
+
+$path =~ s,/,:::,;
+copy($file, "$pfad/$path.SCANCD");
