@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.7 2004-06-07 20:08:25 mitch Exp $
+# $Id: scancd.pl,v 1.8 2004-06-08 19:33:16 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -9,9 +9,9 @@ use Audio::CD;
 
 # globals
 my ($keep_year, $keep_artist, $keep_title, $keep_version) = ( 1, 1, 0, 0 );
-my $pfad = '/tmp';
-my $file = "$pfad/cdinfo";
-
+my $pfad   = '/tmp';
+my $file   = "$pfad/cdinfo";
+my $remote = 'mitch@mitch:/mnt/storage/Musik/scancd';
 
 my $args = join '', @ARGV;
 $args =~ tr/A-Z/a-z/;
@@ -53,7 +53,7 @@ print CDINFO "DISCID=$discid\n";
 
 use Term::ReadLine;
 my ($artist, $album, $path, $title, $version, $year);
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.7 2004-06-07 20:08:25 mitch Exp $';
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.8 2004-06-08 19:33:16 mitch Exp $';
 $|++;
 
 $artist = $term->readline("Artist  : ");
@@ -103,4 +103,4 @@ close CDINFO or die "can't close `$file': $!\n";
 use File::Copy;
 
 $path =~ s,/,___,;
-copy($file, "$pfad/$path.SCANCD");
+system('scp', $file, "$remote/$path.[$discid]");
