@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: encode.pl,v 1.3 2004-06-07 20:05:17 mitch Exp $
+# $Id: encode.pl,v 1.4 2004-06-08 19:30:23 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -64,7 +64,7 @@ while ((my $track = readTag('TRACK')) ne '') {
 		    '-a', $artist,
 		    '-o', "$path/$filename");
 	if ($version ne '') {
-	    push @args, ('-c', "comment=$version");
+	    push @args, ('-c', "comment=($version)");
 	}
 	push @args, '-';
 
