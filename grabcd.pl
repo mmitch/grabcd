@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: grabcd.pl,v 1.3 2004-06-07 19:39:24 mitch Exp $
+# $Id: grabcd.pl,v 1.4 2004-06-12 07:55:52 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -52,7 +52,7 @@ system("scp $file $host:$file");
 # cycle tracks
 while ((my $track = readTag('TRACK')) ne '') {
     print "grabbing track $track\n";
-    system("cdparanoia -e -B -w $track - 2>/dev/null | ssh $host $encode $track");
+    system("cdparanoia -e -B -w $track - | ssh $host $encode $track");
 }
 
 close CDINFO or die "can't close `$file': $!\n";
