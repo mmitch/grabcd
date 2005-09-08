@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.25 2005-09-08 22:30:59 mitch Exp $
+# $Id: scancd.pl,v 1.26 2005-09-08 22:35:32 mitch Exp $
 #
 # 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -49,7 +49,7 @@ print "discid=[$discid], track_count=[".$stat->total_tracks."]\n";
 
 use Term::ReadLine;
 my ($artist, $album, $path, $title, $version, $year, $catalog);
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.25 2005-09-08 22:30:59 mitch Exp $';
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.26 2005-09-08 22:35:32 mitch Exp $';
 $|++;
 
 $catalog = $term->readline("Catalog :");
@@ -63,8 +63,8 @@ $album   =~ s/^\s+//;
 $album   =~ s/\s+$//;
 
 open CDINFO, '>', $file or die "can't open `$file': $!\n";
-print CDINFO "CATALOG=$catalog\n";
 print CDINFO "DISCID=$discid\n";
+print CDINFO "CATALOG=$catalog\n";
 print CDINFO "ALBUM=$album\n";
 # read path
 if ($artist eq '') {
