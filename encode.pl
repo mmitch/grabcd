@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: encode.pl,v 1.8 2004-06-18 20:03:24 mitch Exp $
+# $Id: encode.pl,v 1.9 2005-09-08 22:26:34 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -30,9 +30,10 @@ nice 20;
 
 open CDINFO, '<', $file or die "can't open `$file': $!\n";
 
-my $album = readTag('ALBUM');
-my $path  = readTag('PATH');
-my $first = lc(substr($path, 0, 1));
+my $catalog = readTag('CATALOG');
+my $album   = readTag('ALBUM');
+my $path    = readTag('PATH');
+my $first   = lc(substr($path, 0, 1));
 if ($first =~ /[a-z]/) {
     $path = "/$first/$path";
 } else {
@@ -67,6 +68,8 @@ while ((my $track = readTag('TRACK')) ne '') {
 		    '-o', "$path/$filename");
 	if ($version ne '') {
 	    push @args, ('-c', "comment=($version)");
+	if ($catalog ne '') {
+	    push @args, ('-c', "catalog=$catalog");
 	}
 	push @args, '-';
 
