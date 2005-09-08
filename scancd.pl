@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.23 2005-09-08 22:29:47 mitch Exp $
+# $Id: scancd.pl,v 1.24 2005-09-08 22:30:26 mitch Exp $
 #
 # 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -49,11 +49,7 @@ print "discid=[$discid], track_count=[".$stat->total_tracks."]\n";
 
 use Term::ReadLine;
 my ($artist, $album, $path, $title, $version, $year);
-<<<<<<< scancd.pl
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.23 2005-09-08 22:29:47 mitch Exp $';
-=======
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.23 2005-09-08 22:29:47 mitch Exp $';
->>>>>>> 1.22
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.24 2005-09-08 22:30:26 mitch Exp $';
 $|++;
 
 $catalog = $term->readline("Catalog :");
