@@ -1,17 +1,19 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.26 2005-09-08 22:35:32 mitch Exp $
+# $Id: scancd.pl,v 1.27 2005-09-09 20:22:52 mitch Exp $
 #
 # 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
 #
 use strict;
 use Audio::CD;
+use Grabcd::ReadConfig;
 
 # globals
 my ($keep_year, $keep_artist, $keep_title, $keep_version) = ( 1, 1, 0, 0 );
-my $pfad   = '/tmp';
-my $file   = "$pfad/cdinfo";
-my $remote = 'mitch@mitch:/mnt/storage/Musik/scancd';
+
+my $config = Grabcd::ReadConfig::read_config('grabcd', qw( CDINFO_TEMP CDINFO_REMOTE ));
+my $file   = $config->{CDINFO_TEMP};
+my $remote = $config->{CDINFO_REMOTE};
 
 my $args = join '', @ARGV;
 $args =~ tr/A-Z/a-z/;
@@ -49,7 +51,7 @@ print "discid=[$discid], track_count=[".$stat->total_tracks."]\n";
 
 use Term::ReadLine;
 my ($artist, $album, $path, $title, $version, $year, $catalog);
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.26 2005-09-08 22:35:32 mitch Exp $';
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.27 2005-09-09 20:22:52 mitch Exp $';
 $|++;
 
 $catalog = $term->readline("Catalog :");
@@ -135,4 +137,4 @@ $path =~ s/</\\</g;
 $path =~ s/>/\\>/g;
 $path =~ s/\(/\\(/g;
 $path =~ s/\)/\\)/g;
-system('scp', '-4', $file, "$remote/$path");
+system('scp', $file, "$remote/$path");
