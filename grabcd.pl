@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: grabcd.pl,v 1.10 2005-09-09 20:25:46 mitch Exp $
+# $Id: grabcd.pl,v 1.11 2005-09-09 21:42:33 mitch Exp $
 #
 # 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -47,12 +47,18 @@ die "discid does not match (want=$discid_want, have=$discid_have)\n" unless $dis
 print 'Album : '.readTag('ALBUM' )."\n";
 
 # copy cdinfo
-system("scp $file $host:$file");
+if ($host ne 'localhost' and $host ne '') {
+    system("scp $file $host:$file");
+}
 
 # cycle tracks
 while ((my $track = readTag('TRACK')) ne '') {
     print "grabbing track $track\n";
-    system("cdparanoia -w $track - | ssh $host $encode $track");
+    if ($host ne 'localhost' and $host ne '') {
+	system("cdparanoia -w $track - | ssh $host $encode $track");
+    } else {
+	system("cdparanoia -w $track - | $encode $track");
+    }
 }
 
 close CDINFO or die "can't close `$file': $!\n";
