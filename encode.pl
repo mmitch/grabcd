@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: encode.pl,v 1.11 2005-09-09 20:25:26 mitch Exp $
+# $Id: encode.pl,v 1.12 2005-09-09 20:29:32 mitch Exp $
 #
 # 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -27,7 +27,7 @@ sub readTag($)
 }
 
 # main
-nice $config->{ENCODE_NICE];
+nice $config->{ENCODE_NICE};
 
 open CDINFO, '<', $file or die "can't open `$file': $!\n";
 
