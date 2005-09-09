@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
-# $Id: grabcd.pl,v 1.9 2005-09-09 20:22:02 mitch Exp $
+# $Id: grabcd.pl,v 1.10 2005-09-09 20:25:46 mitch Exp $
 #
-# 2004 (c) by Christian Garbs <mitch@cgarbs.de>
+# 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
 #
 use strict;
