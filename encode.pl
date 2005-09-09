@@ -1,16 +1,17 @@
 #!/usr/bin/perl -w
-# $Id: encode.pl,v 1.10 2005-09-08 22:37:01 mitch Exp $
+# $Id: encode.pl,v 1.11 2005-09-09 20:25:26 mitch Exp $
 #
-# 2004 (c) by Christian Garbs <mitch@cgarbs.de>
+# 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
 #
 use strict;
 use File::Path;
 use POSIX qw(nice);
+use Grabcd::ReadConfig;
 
 # globals
-my $pfad = '/tmp';
-my $file = "$pfad/cdinfo";
+my $config = Grabcd::ReadConfig::read_config('grabcd', qw(CDINFO_TEMP ENCODE_NICE));
+my $file = $config->{CDINFO_TEMP};
 
 # subs
 sub readTag($)
@@ -26,7 +27,7 @@ sub readTag($)
 }
 
 # main
-nice 20;
+nice $config->{ENCODE_NICE];
 
 open CDINFO, '<', $file or die "can't open `$file': $!\n";
 

@@ -1,18 +1,18 @@
 #!/usr/bin/perl -w
-# $Id: grabcd.pl,v 1.8 2005-09-09 20:19:26 mitch Exp $
+# $Id: grabcd.pl,v 1.9 2005-09-09 20:22:02 mitch Exp $
 #
 # 2004 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
 #
 use strict;
 use Audio::CD;
-
+use Grabcd::ReadConfig;
 
 # globals
-my $pfad   = '/tmp';
-my $file   = "$pfad/cdinfo";
-my $host   = 'mitch@mitch';
-my $encode = '/mnt/tomochan/home/mitch/grabcd/encode.pl';
+my $config = Grabcd::ReadConfig::read_config('grabcd', qw(CDINFO_TEMP ENCODE_HOST ENCODE_BINARY));
+my $file   = $config->{CDINFO_TEMP};
+my $host   = $config->{ENCODE_HOST};
+my $encode = $config->{ENCODE_BINARY};
 
 # subs
 sub readTag($)
