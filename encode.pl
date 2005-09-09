@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: encode.pl,v 1.12 2005-09-09 20:29:32 mitch Exp $
+# $Id: encode.pl,v 1.13 2005-09-09 21:34:37 mitch Exp $
 #
 # 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -10,7 +10,7 @@ use POSIX qw(nice);
 use Grabcd::ReadConfig;
 
 # globals
-my $config = Grabcd::ReadConfig::read_config('grabcd', qw(CDINFO_TEMP ENCODE_NICE));
+my $config = Grabcd::ReadConfig::read_config('grabcd', qw(CDINFO_TEMP ENCODE_NICE ENCODE_PATH));
 my $file = $config->{CDINFO_TEMP};
 
 # subs
@@ -40,7 +40,7 @@ if ($first =~ /[a-z]/) {
 } else {
     $path = "/1/$path";
 }
-$path = '/mnt/mp3/mp1' . $path;
+$path = $config->{ENCODE_PATH} . $path;
 
 my $track_want = shift;
 die "no track given!" unless defined $track_want;
