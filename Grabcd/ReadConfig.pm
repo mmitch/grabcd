@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: ReadConfig.pm,v 1.1 2005-09-09 20:09:53 mitch Exp $
+# $Id: ReadConfig.pm,v 1.2 2005-09-09 20:15:51 mitch Exp $
 #
 # 2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # utility function to read a simple config file
@@ -29,8 +29,8 @@ sub read_config($@)
 	$file = "/etc/$filename.conf";
     }
 
-    die "ERROR configuration file <$file> does not exist.\n" unless -e $file;
-    die "ERROR configuration file <$file> is not readable.\n" unless -r _;
+    die "ERROR: configuration file <$file> does not exist.\n" unless -e $file;
+    die "ERROR: configuration file <$file> is not readable.\n" unless -r _;
 
     open CONF, '<', $file or die "can't open <$file>: $!\n";
     while (my $line = <CONF>) {
@@ -47,7 +47,7 @@ sub read_config($@)
 
     foreach my $key (@keys) {
 	$key = uc $key;
-	die "configuration option $key is not set.\n" unless exists $result->{$key};
+	die "ERROR: configuration option $key is not set.\n" unless exists $result->{$key};
     }
 
     return $result;
