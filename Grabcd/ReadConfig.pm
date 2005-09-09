@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: ReadConfig.pm,v 1.2 2005-09-09 20:15:51 mitch Exp $
+# $Id: ReadConfig.pm,v 1.3 2005-09-09 20:17:05 mitch Exp $
 #
 # 2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # utility function to read a simple config file
@@ -37,7 +37,7 @@ sub read_config($@)
 	chomp $line;
 	next if $line =~ /^\s*#/;
 	next if $line =~ /^\s*$/;
-	if ($line =~ /^\s*([A-Z]+)=(.+)\s*$/) {
+	if ($line =~ /^\s*([A-Z_-+]+)=(.+)\s*$/) {
 	    $result->{uc $1} = $2;
 	} else {
 	    warn "unparseable line $. in configuration file\n";
