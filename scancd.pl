@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.27 2005-09-09 20:22:52 mitch Exp $
+# $Id: scancd.pl,v 1.28 2005-09-11 20:49:12 mitch Exp $
 #
 # 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -51,7 +51,7 @@ print "discid=[$discid], track_count=[".$stat->total_tracks."]\n";
 
 use Term::ReadLine;
 my ($artist, $album, $path, $title, $version, $year, $catalog);
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.27 2005-09-09 20:22:52 mitch Exp $';
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.28 2005-09-11 20:49:12 mitch Exp $';
 $|++;
 
 $catalog = $term->readline("Catalog :");
@@ -124,7 +124,7 @@ foreach my $track (1 .. $stat->total_tracks) {
 
 close CDINFO or die "can't close `$file': $!\n";
 
-system("jmacs /tmp/cdinfo");
+system("$ENV{EDITOR} /tmp/cdinfo");
 
 #use File::Copy;
 
