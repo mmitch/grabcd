@@ -1,5 +1,5 @@
 #!/bin/bash
-#$Id: dist-make,v 1.1 2005-09-11 20:05:31 mitch Exp $
+#$Id: dist-make,v 1.2 2005-09-11 20:53:19 mitch Exp $
 
 set +e
 
@@ -10,7 +10,7 @@ rm -rf builddir
 
 cvs update
 mkdir -p builddir/grabcd-$VERSION/Grabcd
-cp encode.pl grabcd.pl README scancd.pl builddir/grabcd-$VERSION
+cp encode.pl grabcd.pl HISTORY README scancd.pl builddir/grabcd-$VERSION
 cp Grabcd/ReadConfig.pm builddir/grabcd-$VERSION/Grabcd
 (
     cd builddir

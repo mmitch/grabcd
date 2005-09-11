@@ -1,0 +1,12 @@
+$Id: HISTORY,v 1.1 2005-09-11 20:53:19 mitch Exp $
+
+grabcd 0004 :: 2005-09-11
+
+ - scancd: don't use hardcoded jmacs but $EDITOR to edit the cdinfo
+           file
+
+
+
+grabcd 0003 :: 2005-09-11
+
+ - Initial version.
