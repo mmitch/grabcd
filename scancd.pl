@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.28 2005-09-11 20:49:12 mitch Exp $
+# $Id: scancd.pl,v 1.29 2005-09-13 20:33:46 mitch Exp $
 #
 # 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -51,7 +51,7 @@ print "discid=[$discid], track_count=[".$stat->total_tracks."]\n";
 
 use Term::ReadLine;
 my ($artist, $album, $path, $title, $version, $year, $catalog);
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.28 2005-09-11 20:49:12 mitch Exp $';
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.29 2005-09-13 20:33:46 mitch Exp $';
 $|++;
 
 $catalog = $term->readline("Catalog :");
@@ -137,4 +137,10 @@ $path =~ s/</\\</g;
 $path =~ s/>/\\>/g;
 $path =~ s/\(/\\(/g;
 $path =~ s/\)/\\)/g;
-system('scp', $file, "$remote/$path");
+
+if ($host ne 'localhost' and $host ne '') {
+    system('scp', $file, "$remote/$path");
+} else {
+    system('scp', $file, $path);
+}
+
