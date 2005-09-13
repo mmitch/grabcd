@@ -1,4 +1,10 @@
-$Id: HISTORY,v 1.1 2005-09-11 20:53:19 mitch Exp $
+$Id: HISTORY,v 1.2 2005-09-13 20:34:39 mitch Exp $
+
+grabcd 0005 :: 2005-09-13
+
+ - scancd: fix storage of cdinfo file in local operation
+
+
 
 grabcd 0004 :: 2005-09-11
 
