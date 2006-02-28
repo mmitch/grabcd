@@ -1,7 +1,7 @@
-$Id: README,v 1.1 2005-09-11 19:53:52 mitch Exp $
+$Id: README,v 1.2 2006-02-28 21:55:32 mitch Exp $
 
 grabcd is an audio CD ripping and encoding suite
-(c) 2004-2005 by Christian Garbs <mitch@cgarbs.de>
+(c) 2004-2006 by Christian Garbs <mitch@cgarbs.de>
 licensed under GNU GPL
 
 == What does it do?
