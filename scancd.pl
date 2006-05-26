@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.33 2006-02-28 21:55:43 mitch Exp $
+# $Id: scancd.pl,v 1.34 2006-05-26 14:05:51 mitch Exp $
 #
 # 2004-2006 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
@@ -51,7 +51,7 @@ print "discid=[$discid], track_count=[".$stat->total_tracks."]\n";
 
 use Term::ReadLine;
 my ($artist, $album, $path, $title, $version, $year, $catalog);
-my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.33 2006-02-28 21:55:43 mitch Exp $';
+my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.34 2006-05-26 14:05:51 mitch Exp $';
 $|++;
 
 $catalog = $term->readline("Catalog :");
@@ -126,18 +126,6 @@ close CDINFO or die "can't close `$file': $!\n";
 
 system($ENV{EDITOR}, $file);
 
-#use File::Copy;
-
 $path =~ s,/,___,g;
-$path =~ s/;/\\;/g;
-$path =~ s/'/\\'/g;
-$path =~ s/ /\\ /g;
-$path =~ s/&/\\&/g;
-$path =~ s/</\\</g;
-$path =~ s/>/\\>/g;
-$path =~ s/\(/\\(/g;
-$path =~ s/\)/\\)/g;
-
+$path =~ s/([;\' &<>()])/\\$1/g;
 system('scp', $file, "$remote/$path");
-
-
