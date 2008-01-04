@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-# $Id: scancd.pl,v 1.34 2006-05-26 14:05:51 mitch Exp $
 #
 # 2004-2006 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL

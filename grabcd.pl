@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-# $Id: grabcd.pl,v 1.11 2005-09-09 21:42:33 mitch Exp $
 #
 # 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL

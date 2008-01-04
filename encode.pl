@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-# $Id: encode.pl,v 1.13 2005-09-09 21:34:37 mitch Exp $
 #
 # 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL

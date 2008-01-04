@@ -1,5 +1,4 @@
 #!/bin/bash
-#$Id: dist-make,v 1.2 2005-09-11 20:53:19 mitch Exp $
 
 set +e
 

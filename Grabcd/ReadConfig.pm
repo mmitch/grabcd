@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-# $Id: ReadConfig.pm,v 1.4 2005-09-09 20:17:25 mitch Exp $
 #
 # 2005 (c) by Christian Garbs <mitch@cgarbs.de>
 # utility function to read a simple config file
