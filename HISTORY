@@ -1,5 +1,10 @@
 grabcd HISTORY
 
+ - scancd: fix escaped spaces in scancd on local operation
+           fix missing escape for double quotes
+
+
+
 grabcd 0006 :: 2006-02-28
 
  - scancd: fix storage of cdinfo file in local operation again

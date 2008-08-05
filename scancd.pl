@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #
-# 2004-2006 (c) by Christian Garbs <mitch@cgarbs.de>
+# 2004-2006,2008 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
 #
 use strict;
@@ -126,5 +126,8 @@ close CDINFO or die "can't close `$file': $!\n";
 system($ENV{EDITOR}, $file);
 
 $path =~ s,/,___,g;
-$path =~ s/([;\' &<>()])/\\$1/g;
+if ($remote !~ m:^/:) {
+    # remote operation
+    $path =~ s/([;"\\' &<>()])/\\$1/g;
+}
 system('scp', $file, "$remote/$path");
