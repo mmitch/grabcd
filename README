@@ -1,32 +1,31 @@
 grabcd README
 
 grabcd is an audio CD ripping and encoding suite
-(c) 2004-2007 by Christian Garbs <mitch@cgarbs.de>
+(c) 2004-2008 by Christian Garbs <mitch@cgarbs.de>
 licensed under GNU GPL
 
 == What does it do?
 
-"scancd.pl" reads a CD and lets you enter track information (I'm no
-fan of CDDB as the data there is very limited - think of a hit sampler
-CD with different artists, you can't have a different artist per
-track).
+"scancd.pl" reads a CD and lets you enter track information (I'm no fan of
+CDDB as the data there is very limited - think of a hit sampler CD with
+different artists, you can't have a different artist per track).
 
-"grabcd.pl" will then read the CD and start the encoding via
-"encode.pl" (this will be done automatically).  You will get OGG
-encoded files in a specified directory hierarchy.
+"grabcd.pl" will then read the CD using icedax and start the encoding via
+"encode.pl" (this will be done automatically).  You will get OGG encoded
+files in a specified directory hierarchy.
 
 
 == What's special about this?
 
-grabcd.sh and encode.sh can run on different machines.  This is
-essential for me as my CD-ROM is in my slow workstation while the
-server with the fast CPU has no CD-ROM.
+grabcd.sh and encode.sh can run on different machines.  This is essential
+for me as my CD-ROM is in my slow workstation while the server with the fast
+CPU has no CD-ROM.
 
 
 == How to use it?
 
-Generate a config file, either /etc/grabcd.conf for everyone or
-~/.grabcd for yourself.
+Generate a config file, either /etc/grabcd.conf for everyone or ~/.grabcd
+for yourself.
 
 This is an example for "everything local":
 
@@ -66,5 +65,7 @@ ENCODE_PATH    - Where to put the encoded files.
 
 == Limitations
 
-"scancd.pl" and "grabcd.pl" always read from /dev/cdrom.  This is because
-Audio::CD does not seem to have a configuration option for this.
+"scancd.pl" and "grabcd.pl" always read from /dev/cdrom.  This is
+because Audio::CD does not seem to have a configuration option for
+this.  If icedax uses another device by default, you can set
+$CDDA_DEVICE to the correct one.

@@ -5,8 +5,8 @@ type: :feature
 component: grabcd
 release: "0007"
 reporter: Christian Garbs <mitch@cgarbs.de>
-status: :unstarted
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2008-08-05 18:55:34.462642 Z
 references: []
 
@@ -16,3 +16,16 @@ log_events:
   - Christian Garbs <mitch@cgarbs.de>
   - created
   - ""
+- - 2008-08-05 20:01:17.319569 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - closed with disposition fixed
+  - |-
+    switched to icedax
+    this does not fix my problem - it is kernel related: SCSI cdrom audio grabs only work as root, regardless of using icedax or cdparanoia
+- - 2008-08-05 20:35:10.666778 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - commented
+  - |-
+    the problem with the user-acces resulted from /dev/cdrom pointing to /dev/scd0 instead of /dev/sg0
+    with the latter both cdparanoia and icedax work
+    setting CDDA_DEVICE to 0,5,0 makes it work for me without touching the /dev/cdrom symlink

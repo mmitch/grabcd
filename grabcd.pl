@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #
-# 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
+# 2004-2005,2008 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
 #
 use strict;
@@ -54,9 +54,9 @@ if ($host ne 'localhost' and $host ne '') {
 while ((my $track = readTag('TRACK')) ne '') {
     print "grabbing track $track\n";
     if ($host ne 'localhost' and $host ne '') {
-	system("cdparanoia -w $track - | ssh $host $encode $track");
+	system("icedax -O wav -t $track -paranoia - | ssh $host $encode $track");
     } else {
-	system("cdparanoia -w $track - | $encode $track");
+	system("icedax -O wav -t $track -paranoia - | $encode $track");
     }
 }
 

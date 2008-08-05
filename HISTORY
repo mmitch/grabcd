@@ -1,5 +1,7 @@
 grabcd HISTORY
 
+ - grabcd: use icedax instead of cdparanoia
+
  - scancd: fix escaped spaces in scancd on local operation
            fix missing escape for double quotes
 
