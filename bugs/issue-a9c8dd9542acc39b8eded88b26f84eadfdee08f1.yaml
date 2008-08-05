@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: implement sane build system
+desc: dist-make is old, stupid and relies on CVS
+type: :task
+component: grabcd
+release: 
+reporter: Christian Garbs <mitch@cgarbs.de>
+status: :unstarted
+disposition: 
+creation_time: 2008-08-05 18:56:05.729494 Z
+references: []
+
+id: a9c8dd9542acc39b8eded88b26f84eadfdee08f1
+log_events: 
+- - 2008-08-05 18:56:06.405540 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - created
+  - ""

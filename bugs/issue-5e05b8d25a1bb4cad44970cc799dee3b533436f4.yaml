@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: fix escaped spaces in scancd on local operation
+desc: don't escape spaces in the index filename when files are not copied via SSH
+type: :bugfix
+component: grabcd
+release: "0007"
+reporter: Christian Garbs <mitch@cgarbs.de>
+status: :unstarted
+disposition: 
+creation_time: 2008-08-05 19:15:32.242789 Z
+references: []
+
+id: 5e05b8d25a1bb4cad44970cc799dee3b533436f4
+log_events: 
+- - 2008-08-05 19:15:33.590373 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - created
+  - ""

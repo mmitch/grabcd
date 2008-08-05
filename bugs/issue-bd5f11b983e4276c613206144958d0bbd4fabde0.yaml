@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: use icedax
+desc: use icedax/cdda2wav instead of cdparanoia (does not work with current kernels for me)
+type: :feature
+component: grabcd
+release: "0007"
+reporter: Christian Garbs <mitch@cgarbs.de>
+status: :unstarted
+disposition: 
+creation_time: 2008-08-05 18:55:34.462642 Z
+references: []
+
+id: bd5f11b983e4276c613206144958d0bbd4fabde0
+log_events: 
+- - 2008-08-05 18:55:35.250394 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - created
+  - ""
