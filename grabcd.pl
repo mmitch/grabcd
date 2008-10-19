@@ -52,7 +52,7 @@ if ($host ne 'localhost' and $host ne '') {
 
 # cycle tracks
 while ((my $track = readTag('TRACK')) ne '') {
-    print "grabbing track $track\n";
+    print "\n\t*** grabbing track $track ***\n\n";
     if ($host ne 'localhost' and $host ne '') {
 	system("icedax -O wav -t $track -paranoia - | ssh $host $encode $track");
     } else {
