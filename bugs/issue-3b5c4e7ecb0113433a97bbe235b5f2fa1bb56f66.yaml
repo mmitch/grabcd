@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: import cd-text information
+desc: "no Perl module found, but icedax writes a .cdindex file when information is found.  should be parsed within scancd.  also remove .cddb and .cdindex files afterwards (or use -H).  optional: commandline option to supress cdtext detection."
+type: :feature
+component: grabcd
+release: 
+reporter: Christian Garbs <mitch@cgarbs.de>
+status: :unstarted
+disposition: 
+creation_time: 2008-11-14 22:18:08.478382 Z
+references: []
+
+id: 3b5c4e7ecb0113433a97bbe235b5f2fa1bb56f66
+log_events: 
+- - 2008-11-14 22:18:09.114775 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - created
+  - ""
