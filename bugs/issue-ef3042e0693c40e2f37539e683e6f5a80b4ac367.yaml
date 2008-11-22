@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: make icedax more verbose?
+desc: recently added -q is too quiet!
+type: :feature
+component: grabcd
+release: 
+reporter: Christian Garbs <mitch@cgarbs.de>
+status: :unstarted
+disposition: 
+creation_time: 2008-11-22 18:22:48.186107 Z
+references: []
+
+id: ef3042e0693c40e2f37539e683e6f5a80b4ac367
+log_events: 
+- - 2008-11-22 18:22:48.763783 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - created
+  - ""
