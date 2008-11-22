@@ -54,9 +54,9 @@ if ($host ne 'localhost' and $host ne '') {
 while ((my $track = readTag('TRACK')) ne '') {
     print "\n\t*** grabbing track $track ***\n\n";
     if ($host ne 'localhost' and $host ne '') {
-	system("icedax -O wav -t $track -paranoia - | ssh $host $encode $track");
+	system("icedax -q -O wav -t $track -paranoia - | ssh $host $encode $track");
     } else {
-	system("icedax -O wav -t $track -paranoia - | $encode $track");
+	system("icedax -q -O wav -t $track -paranoia - | $encode $track");
     }
 }
 
