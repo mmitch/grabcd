@@ -1,22 +1,22 @@
 --- !ditz.rubyforge.org,2008-03-06/issue 
-title: implement sane build system
-desc: dist-make is old, stupid and relies on CVS
-type: :task
+title: less verbose output
+desc: icedax produces too much output, current track number gets lost in all the text
+type: :feature
 component: grabcd
 release: 0008
 reporter: Christian Garbs <mitch@cgarbs.de>
 status: :unstarted
 disposition: 
-creation_time: 2008-08-05 18:56:05.729494 Z
+creation_time: 2008-11-22 17:54:46.157332 Z
 references: []
 
-id: a9c8dd9542acc39b8eded88b26f84eadfdee08f1
+id: 61ebff5c8b0d9a657f2b18430eb4b96d3db5ebe6
 log_events: 
-- - 2008-08-05 18:56:06.405540 Z
+- - 2008-11-22 17:54:47.511401 Z
   - Christian Garbs <mitch@cgarbs.de>
   - created
   - ""
-- - 2008-11-22 17:57:17.765453 Z
+- - 2008-11-22 17:57:25.882291 Z
   - Christian Garbs <mitch@cgarbs.de>
   - assigned to release 0008 from unassigned
   - ""
