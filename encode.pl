@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #
-# 2004-2005 (c) by Christian Garbs <mitch@cgarbs.de>
+# 2004-2005,2008 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
 #
 use strict;
@@ -9,6 +9,8 @@ use POSIX qw(nice);
 use Grabcd::ReadConfig;
 
 # globals
+my $VERSION = '@@git@@';
+
 my $config = Grabcd::ReadConfig::read_config('grabcd', qw(CDINFO_TEMP ENCODE_NICE ENCODE_PATH));
 my $file = $config->{CDINFO_TEMP};
 

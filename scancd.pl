@@ -8,6 +8,8 @@ use Audio::CD;
 use Grabcd::ReadConfig;
 
 # globals
+my $VERSION = '@@git@@';
+
 my ($keep_year, $keep_artist, $keep_title, $keep_version) = ( 1, 1, 0, 0 );
 
 my $config = Grabcd::ReadConfig::read_config('grabcd', qw( CDINFO_TEMP CDINFO_REMOTE ));

@@ -8,6 +8,8 @@ use Audio::CD;
 use Grabcd::ReadConfig;
 
 # globals
+my $VERSION = '@@git@@';
+
 my $config = Grabcd::ReadConfig::read_config('grabcd', qw(CDINFO_TEMP ENCODE_HOST ENCODE_BINARY));
 my $file   = $config->{CDINFO_TEMP};
 my $host   = $config->{ENCODE_HOST};
