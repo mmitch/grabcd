@@ -5,8 +5,8 @@ type: :task
 component: grabcd
 release: 0008
 reporter: Christian Garbs <mitch@cgarbs.de>
-status: :unstarted
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2008-08-05 18:56:05.729494 Z
 references: []
 
@@ -20,3 +20,7 @@ log_events:
   - Christian Garbs <mitch@cgarbs.de>
   - assigned to release 0008 from unassigned
   - ""
+- - 2008-11-22 18:09:10.595182 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - closed with disposition fixed
+  - proper Makefile added
