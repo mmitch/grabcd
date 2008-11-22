@@ -1,5 +1,9 @@
 grabcd HISTORY
 
+== 0008 / 2008-11-22
+* less verbose output
+* implement sane build system
+
 == 0007 / 2008-08-05
 * grabcd: use icedax instead of cdparanoia
 * scancd: fix escaped spaces in scancd on local operation

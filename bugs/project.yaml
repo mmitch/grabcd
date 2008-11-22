@@ -20,10 +20,14 @@ releases:
     - ""
 - !ditz.rubyforge.org,2008-03-06/release 
   name: 0008
-  status: :unreleased
-  release_time: 
+  status: :released
+  release_time: 2008-11-22 18:10:18.163727 Z
   log_events: 
   - - 2008-11-22 17:53:29.917590 Z
     - Christian Garbs <mitch@cgarbs.de>
     - created
+    - ""
+  - - 2008-11-22 18:10:18.163760 Z
+    - Christian Garbs <mitch@cgarbs.de>
+    - released
     - ""
