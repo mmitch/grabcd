@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: add CDDB support
+desc: ""
+type: :feature
+component: grabcd
+release: 
+reporter: Christian Garbs <mitch@cgarbs.de>
+status: :unstarted
+disposition: 
+creation_time: 2008-12-01 19:18:51.487273 Z
+references: []
+
+id: 4c1f7741b207e385cd36dcedf4bdd2402154fe6a
+log_events: 
+- - 2008-12-01 19:18:52.045020 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - created
+  - ""

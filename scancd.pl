@@ -50,8 +50,12 @@ my @tracks = @{$stat->tracks};
 
 print "discid=[$discid], track_count=[".$stat->total_tracks."]\n";
 
+# get CDDB data
+my $cddbdata = $cddb->lookup;
+my ($artist, $album) = ($cddbdata->artist, $cddbdata->title);
+
 use Term::ReadLine;
-my ($artist, $album, $path, $title, $version, $year, $catalog);
+my ($catalog, $path, $title, $version, $year);
 my $term = new Term::ReadLine 'scancd $Id: scancd.pl,v 1.34 2006-05-26 14:05:51 mitch Exp $';
 $|++;
 
@@ -83,25 +87,24 @@ $path   =~ s/^\s+//;
 $path   =~ s/\s+$//;
 print CDINFO "PATH=$path\n";
 
-# {
 foreach my $track (1 .. $stat->total_tracks) {
-    unless ($tracks[$track-1]->is_audio) {
+    my $tnum = $track-1;
+    unless ($tracks[$tnum]->is_audio) {
 	print "\nskipping $track, no audio...\n";
 	next;
     }
     print CDINFO "\nTRACK=$track\n";
-    my ($minutes, $seconds) = $tracks[$track-1]->length;
+    my ($minutes, $seconds) = $tracks[$tnum]->length;
     printf "\n == Track %02d/%02d  %02d:%02d  ==\n", $track, $stat->total_tracks, $minutes, $seconds;
     if ($keep_artist) {
 	$artist  = $term->readline("Artist  :", $artist);
     } else {
 	$artist  = $term->readline("Artist  :");
     }
-    if ($keep_title) {
-	$title   = $term->readline("Title   :", $title);
-    } else {
-	$title   = $term->readline("Title   :");
+    if (! $keep_title) {
+      $title = @{$cddbdata->tracks($stat)}[$tnum]->name;
     }
+    $title   = $term->readline("Title   :", $title);
     if ($keep_version) {
 	$version = $term->readline("Version :", $version);
     } else {
