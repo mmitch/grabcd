@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: change script names
+desc: "\"encode.pl\" is a pretty generic name, also the language extension is bad.  Rename scripts to \"grabcd-encode\", \"grabcd-rip\" and \"grabcd-scan\".  Print a warning on old configuration files and autocorrect the binary name."
+type: :bugfix
+component: grabcd
+release: 0009
+reporter: Christian Garbs <mitch@cgarbs.de>
+status: :unstarted
+disposition: 
+creation_time: 2008-12-28 09:44:15.542154 Z
+references: []
+
+id: 0c891ae1c441141bf68329ba31c0828c1871a7af
+log_events: 
+- - 2008-12-28 09:44:34.299211 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - created
+  - issue imported from LP#46448 https://bugs.launchpad.net/ubuntu/+source/grabcd/+bug/46448
