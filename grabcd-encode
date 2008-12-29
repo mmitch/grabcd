@@ -1,5 +1,7 @@
 #!/usr/bin/perl -w
 #
+# grabcd-encode  --  encode and tag audio files
+#
 # 2004-2005,2008 (c) by Christian Garbs <mitch@cgarbs.de>
 # Licensed under GNU GPL
 #
