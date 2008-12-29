@@ -15,7 +15,7 @@ package Grabcd::ReadConfig;
 sub read_config($@)
 # $_[0]    = Configuration file name
 # $_[1..n] = must-have configuration keys
-# result is an hash of the configuration
+# result is a hash of the configuration
 {
     my $filename = shift;
     my @keys = @_;
