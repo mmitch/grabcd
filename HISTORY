@@ -1,24 +1,31 @@
 grabcd HISTORY
 
+== 0009 / 2008-12-29
+* bugfix: change script names
+  look out!
+  - encode.pl is now called grabcd-encode
+  - grabcd.pl is now called grabcd-rip
+  - scancd.pl is now called grabcd-scan
+
 == 0008 / 2008-11-22
 * less verbose output
 * implement sane build system
 
 == 0007 / 2008-08-05
-* grabcd: use icedax instead of cdparanoia
-* scancd: fix escaped spaces in scancd on local operation
-* scancd: fix missing escape for double quotes
+* grabcd-rip: use icedax instead of cdparanoia
+* grabcd-scan: fix escaped spaces in scancd on local operation
+* grabcd-scan: fix missing escape for double quotes
 * document Audio::CD limitation of always using /dev/cdrom
 
 == 0006 / 2006-02-28
-* scancd: fix storage of cdinfo file in local operation again
-          (seldom used feature -_-;;)
+* grabcd-scan: fix storage of cdinfo file in local operation again
+               (seldom used feature -_-;;)
 
 == 0005 / 2005-09-13
-* scancd: fix storage of cdinfo file in local operation
+* grabcd-scan: fix storage of cdinfo file in local operation
 
 == 0004 / 2005-09-11
-* scancd: don't use hardcoded jmacs but $EDITOR to edit the cdinfo file
+* grabcd-scan: don't use hardcoded jmacs but $EDITOR to edit the cdinfo file
 
 == 0003 / 2005-09-11
 * Initial version.
