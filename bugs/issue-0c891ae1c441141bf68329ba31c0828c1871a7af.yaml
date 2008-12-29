@@ -5,7 +5,7 @@ type: :bugfix
 component: grabcd
 release: 0009
 reporter: Christian Garbs <mitch@cgarbs.de>
-status: :unstarted
+status: :in_progress
 disposition: 
 creation_time: 2008-12-28 09:44:15.542154 Z
 references: []
@@ -16,3 +16,7 @@ log_events:
   - Christian Garbs <mitch@cgarbs.de>
   - created
   - issue imported from LP#46448 https://bugs.launchpad.net/ubuntu/+source/grabcd/+bug/46448
+- - 2008-12-29 18:18:12.475460 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - changed status from unstarted to in_progress
+  - ""
