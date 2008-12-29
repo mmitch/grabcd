@@ -13,6 +13,25 @@ use Grabcd::ReadConfig;
 my $VERSION = '@@git@@';
 
 my $config = Grabcd::ReadConfig::read_config('grabcd', qw(CDINFO_TEMP ENCODE_HOST ENCODE_BINARY));
+
+### vvv-- warn about old config file entry and fix it
+if ($config->{'ENCODE_BINARY'} =~ /encode\.pl$/) {
+    warn <<"EOF";
+   _
+  | |   Your grabcd configuration contains the script name 'encode.pl'
+  | |   in the variable ENCODE_BINARY.  As of version 0009, the script
+  | |   was renamed to 'grabcd-encode'.  grabcd-rip will automatically
+  |_|   try to use the new script name -- but this may fail.
+   _
+  (_)   Please update your configuration file to suppress this warning.
+
+EOF
+    ;
+
+    $config->{'ENCODE_BINARY'} =~ s/encode\.pl$/grabcd-encode/;
+}
+### ^^^-- warn about old config file entry and fix it
+
 my $file   = $config->{CDINFO_TEMP};
 my $host   = $config->{ENCODE_HOST};
 my $encode = $config->{ENCODE_BINARY};
