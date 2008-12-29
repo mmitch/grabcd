@@ -6,20 +6,21 @@ licensed under GNU GPL
 
 == What does it do?
 
-"scancd.pl" reads a CD and lets you enter track information (I'm no fan of
-CDDB as the data there is very limited - think of a hit sampler CD with
-different artists, you can't have a different artist per track).
+"grabcd-scan" reads a CD and lets you enter track information (I'm no
+fan of CDDB as the data there is very limited - think of a hit sampler
+CD with different artists, you can't have a different artist per
+track).
 
-"grabcd.pl" will then read the CD using icedax and start the encoding via
-"encode.pl" (this will be done automatically).  You will get OGG encoded
-files in a specified directory hierarchy.
+"grabcd-rip" will then read the CD using icedax and start the encoding
+via "grabcd-encode" (this will be done automatically).  You will get
+OGG encoded files in a specified directory hierarchy.
 
 
 == What's special about this?
 
-grabcd.sh and encode.sh can run on different machines.  This is essential
-for me as my CD-ROM is in my slow workstation while the server with the fast
-CPU has no CD-ROM.
+grabcd-rip and grabcd-encode can run on different machines.  This was
+essential for me when writing these scripts as my CD-ROM was in my
+slow workstation while the server with the fast CPU had no CD-ROM.
 
 
 == How to use it?
@@ -30,9 +31,9 @@ for yourself.
 This is an example for "everything local":
 
 CDINFO_TEMP=/tmp/cdinfo
-CDINFO_REMOTE=/mnt/storage/scancd
+CDINFO_REMOTE=/mnt/storage/grabcd-scan
 ENCODE_HOST=localhost
-ENCODE_BINARY=/usr/bin/encode.pl
+ENCODE_BINARY=/usr/bin/grabcd-encode
 ENCODE_NICE=20
 ENCODE_PATH=/mnt/storage/ogg
 
@@ -40,9 +41,9 @@ ENCODE_PATH=/mnt/storage/ogg
 This is an example for "networked operation":
 
 CDINFO_TEMP=/tmp/cdinfo
-CDINFO_REMOTE=mitch@yggdrasil.mitch.h.shuttle.de:/home/mitch/ogg/scancd
+CDINFO_REMOTE=mitch@yggdrasil.mitch.h.shuttle.de:/home/mitch/ogg/grabcd-scan
 ENCODE_HOST=mitch@yggdrasil.mitch.h.shuttle.de
-ENCODE_BINARY=/home/mitch/bin/encode.pl
+ENCODE_BINARY=/home/mitch/bin/grabcd-encode
 ENCODE_NICE=20
 ENCODE_PATH=/home/mitch/ogg
 
@@ -53,19 +54,19 @@ ENCODE_PATH=/home/mitch/ogg
 CDINFO_TEMP    - The artist/track data is temporarily stored here
 CDINFO_REMOTE  - The artist/track data is archived here.  Useful if
                  you want to reread a CD later.  Just copy the
-                 appropriate file to $CDINFO_TEMP and start grabcd.pl.
-ENCODE_HOST    - Where to run encode.pl.  Set to empty or "localhost"
+                 appropriate file to $CDINFO_TEMP and start grabcd-rip.
+ENCODE_HOST    - Where to run grabcd-encode.  Set to empty or "localhost"
                  for local operation.  Set to a "hostname" or
                  "user@hostname" for remote operation.
-ENCODE_BINARY  - Where to find the encode.pl binary.
-ENCODE_NICE    - Nicelevel for encode.pl.
+ENCODE_BINARY  - Where to find the grabcd-encode binary.
+ENCODE_NICE    - Nicelevel for grabcd-encode.
 ENCODE_PATH    - Where to put the encoded files.
 
 
 
 == Limitations
 
-"scancd.pl" and "grabcd.pl" always read from /dev/cdrom.  This is
+grabcd-scan and grabcd-rip always read from /dev/cdrom.  This is
 because Audio::CD does not seem to have a configuration option for
 this.  If icedax uses another device by default, you can set
 $CDDA_DEVICE to the correct one.

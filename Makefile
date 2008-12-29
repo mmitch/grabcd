@@ -4,7 +4,7 @@ VERSION=0008git
 DISTDIR=$(PKGNAME)-$(VERSION)
 DISTFILE=$(DISTDIR).tar.gz
 
-BINARIES=encode.pl grabcd.pl scancd.pl
+BINARIES=grabcd-encode grabcd-rip grabcd-scan
 CONFIG=
 DOCUMENTS=HISTORY README
 

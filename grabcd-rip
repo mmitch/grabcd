@@ -36,13 +36,13 @@ my $stat = $cd->close;
 $stat = $cd->stat;
 die "no cd detected\n" unless $stat->present;
 
-open CDINFO, '<', $file or die "can't open `$file': $!\ndid you run scancd.pl before?\n";
+open CDINFO, '<', $file or die "can't open `$file': $!\ndid you run grabcd-scan before?\n";
 
 # check discid
 my $cddb = $cd->cddb;
 my $discid_want = $cddb->discid;
 my $discid_have = readTag('DISCID');
-die "discid does not match (want=$discid_want, have=$discid_have)\ndid you run scancd.pl before?\n" unless $discid_want eq $discid_have;
+die "discid does not match (want=$discid_want, have=$discid_have)\ndid you run grabcd-scan before?\n" unless $discid_want eq $discid_have;
 
 # display album
 print 'Album : '.readTag('ALBUM' )."\n";
