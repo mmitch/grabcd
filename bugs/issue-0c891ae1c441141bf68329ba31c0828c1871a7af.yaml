@@ -5,8 +5,8 @@ type: :bugfix
 component: grabcd
 release: 0009
 reporter: Christian Garbs <mitch@cgarbs.de>
-status: :in_progress
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2008-12-28 09:44:15.542154 Z
 references: []
 
@@ -19,4 +19,8 @@ log_events:
 - - 2008-12-29 18:18:12.475460 Z
   - Christian Garbs <mitch@cgarbs.de>
   - changed status from unstarted to in_progress
+  - ""
+- - 2008-12-29 18:48:19.678360 Z
+  - Christian Garbs <mitch@cgarbs.de>
+  - closed with disposition fixed
   - ""
