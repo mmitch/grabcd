@@ -22,14 +22,20 @@ sub read_config($@)
 
     my $result = {};
 
-    my $file = "$ENV{HOME}/.$filename";
+    my @files = ( "$ENV{HOME}/.$filename", "/etc/$filename.conf" );
 
-    if (! -r $file) {
-	$file = "/etc/$filename.conf";
+    my $file = undef;
+    for (@files)
+    {
+	if (-e $_)
+	{
+	    $file = $_;
+	    last;
+	}
     }
 
-    die "ERROR: configuration file <$file> does not exist.\n" unless -e $file;
-    die "ERROR: configuration file <$file> is not readable.\n" unless -r _;
+    die "ERROR: none of the possible configuration files <".join(', ',@files)."> does exist.\n" unless defined $file;
+    die "ERROR: configuration file <$file> is not readable.\n" unless -r $file;
 
     open CONF, '<', $file or die "can't open <$file>: $!\n";
     while (my $line = <CONF>) {
